@@ -2,8 +2,10 @@ import run from '@rollup/plugin-run';
 
 import json from '@rollup/plugin-json';
 
-import typescript from 'rollup-plugin-typescript';
+import typescript from 'rollup-plugin-typescript2';
 import tsConfigPaths from 'rollup-plugin-ts-paths';
+
+import { terser } from 'rollup-plugin-terser';
 
 const dev = process.env.ROLLUP_WATCH === 'true';
 
@@ -14,5 +16,5 @@ export default {
 		format: 'cjs',
 	},
 	external: [],
-	plugins: [dev && run(), json(), typescript(), tsConfigPaths()],
+	plugins: [dev && run(), json(), typescript(), tsConfigPaths(), terser()],
 };
