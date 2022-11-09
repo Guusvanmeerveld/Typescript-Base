@@ -21,7 +21,7 @@
 	},
 	"main": "dist/index.js",
 	"scripts": {
-		"build": "rollup -c",
+		"build": "rollup -c --configPlugin rollup-plugin-typescript2",
 		"dev": "tsnd --respawn -T --cls -r tsconfig-paths/register src",
 		"start": "node . --production",
 		"pretify": "prettier --write .",
