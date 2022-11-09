@@ -1,20 +1,20 @@
-import run from '@rollup/plugin-run';
+import { defineConfig } from "rollup";
 
-import json from '@rollup/plugin-json';
+import json from "@rollup/plugin-json";
+import run from "@rollup/plugin-run";
 
-import typescript from 'rollup-plugin-typescript2';
-import tsConfigPaths from 'rollup-plugin-ts-paths';
+import { terser } from "rollup-plugin-terser";
+import tsConfigPaths from "rollup-plugin-ts-paths";
+import typescript from "rollup-plugin-typescript2";
 
-import { terser } from 'rollup-plugin-terser';
+const dev = process.env.ROLLUP_WATCH === "true";
 
-const dev = process.env.ROLLUP_WATCH === 'true';
-
-export default {
-	input: 'src/index.ts',
+export default defineConfig({
+	input: "src/index.ts",
 	output: {
-		dir: 'dist',
-		format: 'cjs',
+		dir: "dist",
+		format: "cjs"
 	},
 	external: [],
-	plugins: [dev && run(), json(), typescript(), tsConfigPaths(), terser()],
-};
+	plugins: [dev && run(), json(), typescript(), tsConfigPaths(), terser()]
+});
